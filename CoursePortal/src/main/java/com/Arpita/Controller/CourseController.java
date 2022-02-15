@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Arpita.BO.Course;
 import com.Arpita.Service.CourseService;
 
 @RestController
+@RequestMapping("/course")
 public class CourseController {
 	
 	@Autowired
@@ -52,7 +54,7 @@ public class CourseController {
 		return courseService.getCourseByStandard(id);
 	}
 	
-	@GetMapping("/course/")
+	@GetMapping("/courseMsg/")
 	public String getCourseMsg() {
 		return "Welcome To Course Portal";
 	}

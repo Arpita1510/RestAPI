@@ -33,6 +33,7 @@ public class Student {
 	private String section;
 	
 	
+	
 	public Student() {
 	}
 
@@ -100,7 +101,7 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ",age=" + age + ", address=" + address + ", standard=" + standard + ", section="
-				+ section + "]";
+		return "Student [id=" + id + ", name=" + name + ",age=" + age + ", address=" + address + ", standard=" + standard + ", section="+ section + "]";
 	}
 }
+

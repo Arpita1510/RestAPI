@@ -44,7 +44,7 @@ public class StudentService {
 		
 		RestTemplateBO studDetails = new RestTemplateBO();
 		
-		Course course = restTemplate.getForObject("http://localhost:9001/viewCourse/class/" +student.getStandard() , Course.class);
+		Course course = restTemplate.getForObject("http://localhost:9001/course/viewCourse/class/" +student.getStandard() , Course.class);
 		
 		studDetails.setStudent(student);
 		studDetails.setCourse(course);
@@ -61,7 +61,7 @@ public class StudentService {
 		for(Student student : studentList) {
 			RestTemplateBO studDetails = new RestTemplateBO();
 			
-			Course course = restTemplate.getForObject("http://localhost:9001/viewCourse/class/" +student.getStandard() , Course.class) ;
+			Course course = restTemplate.getForObject("http://COURSE-PORTAL/course/viewCourse/class/" +student.getStandard() , Course.class) ;
 			studDetails.setStudent(student);
 			studDetails.setCourse(course);
 			studentCourseList.add(studDetails);
@@ -72,7 +72,7 @@ public class StudentService {
 	  //Fetch all course records
 	  public Object viewCourseList() {
 		
-		Object course = restTemplate.getForObject("http://localhost:9001/viewCourse/1", Course.class);
+		Object course = restTemplate.getForObject("http://localhost:9001/course/viewCourse/1", Course.class);
 
 		return course;
 	  }
@@ -104,8 +104,8 @@ public class StudentService {
 		  if(studentList != null && !studentList.isEmpty()) {
 			  for(Student student : studentList) {
 				  if(maxAge < student.getAge()) {
-					  maxAge = student.getAge();
-				  }
+				  maxAge = student.getAge();
+				}
 			  }
 		  }
 		  return maxAge;
@@ -119,8 +119,8 @@ public class StudentService {
 		  if(studentList != null && !studentList.isEmpty()) {
 			  for(Student student : studentList) {
 				  if(minAge == 0 || minAge > student.getAge()) {
-					  minAge = student.getAge();
-				  }
+				  minAge = student.getAge();
+				}
 			  }
 		  }
 		  return minAge;
@@ -131,7 +131,7 @@ public class StudentService {
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity <String> entity = new HttpEntity<String>(headers);
-		Object courseMsg = restTemplate.exchange("http://localhost:9001/course/", HttpMethod.GET, entity, String.class).getBody();//getForObject("http://localhost:9001/course/", Course.class);
+		Object courseMsg = restTemplate.exchange("http://COURSE-PORTAL/course/courseMsg/", HttpMethod.GET, entity, String.class).getBody();
 		return courseMsg;
 	}
 	  

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,9 +25,9 @@ import com.Arpita.StudentService.StudentService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @Validated
+@RequestMapping("/student")
 public class StudentController {
 	
 	@Autowired
@@ -42,7 +43,7 @@ public class StudentController {
 		}
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
-				"/{id}").buildAndExpand(newStudent.getId()).toUri();
+				"/{id}").buildAndExpand( newStudent.getId() ).toUri();
 
 		return ResponseEntity.created(location).build();
 	}
@@ -72,7 +73,7 @@ public class StudentController {
 	}
 	
 	//Fetch all course
-	@GetMapping("/course/")
+	@GetMapping("/courseMsg/")
 	public Object getCourseMsg() {
 		return studentService.getCourseMsg();
 	}
